@@ -1,4 +1,5 @@
 from typing import List, Optional, TypeVar, Type
+from collections import deque
 
 T = TypeVar("T", bound="TreeNode")
 
@@ -10,18 +11,25 @@ class TreeNode:
         self.right = right
 
     @classmethod
-    def create_from_list(cls, nums: List[int]) -> T:
-        if not nums:
+    def create_from_list(cls, values: List[int]) -> T:
+        if not values:
             return None
-        nodes = [None if v is None else cls(v) for v in nums]
-        for i, node in enumerate(nodes):
-            if node is not None:
-                left_child_index = 2 * i + 1
-                node.left = (
-                    nodes[left_child_index] if left_child_index < len(nodes) else None
-                )
-                right_child_index = 2 * i + 2
-                node.right = (
-                    nodes[right_child_index] if right_child_index < len(nodes) else None
-                )
-        return nodes[0]
+
+        root = TreeNode(values[0])
+        queue = deque([root])
+        i = 1
+
+        while queue and i < len(values):
+            node = queue.popleft()
+
+            if values[i] is not None:  # left child
+                node.left = TreeNode(values[i])
+                queue.append(node.left)
+            i += 1
+
+            if i < len(values) and values[i] is not None:  # right child
+                node.right = TreeNode(values[i])
+                queue.append(node.right)
+            i += 1
+
+        return root
