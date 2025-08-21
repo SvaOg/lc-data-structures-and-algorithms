@@ -1182,8 +1182,8 @@
       "height": 80,
       "angle": 0,
       "strokeColor": "#2f9e44",
-      "backgroundColor": "transparent",
-      "fillStyle": "solid",
+      "backgroundColor": "#b2f2bb",
+      "fillStyle": "hachure",
       "strokeWidth": 2,
       "strokeStyle": "solid",
       "roughness": 1,
@@ -1195,8 +1195,8 @@
         "type": 2
       },
       "seed": 901031160,
-      "version": 8,
-      "versionNonce": 56543992,
+      "version": 10,
+      "versionNonce": 2065746436,
       "isDeleted": false,
       "boundElements": [
         {
@@ -1208,7 +1208,7 @@
           "type": "arrow"
         }
       ],
-      "updated": 1755535817889,
+      "updated": 1755696796784,
       "link": null,
       "locked": false
     },
@@ -1307,7 +1307,7 @@
       "version": 16,
       "versionNonce": 1520689144,
       "isDeleted": false,
-      "boundElements": null,
+      "boundElements": [],
       "updated": 1755535809940,
       "link": null,
       "locked": false,
@@ -1361,7 +1361,7 @@
       "version": 16,
       "versionNonce": 205171704,
       "isDeleted": false,
-      "boundElements": null,
+      "boundElements": [],
       "updated": 1755535817889,
       "link": null,
       "locked": false,

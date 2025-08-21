@@ -33,3 +33,35 @@ class TreeNode:
             i += 1
 
         return root
+
+    @classmethod
+    def save_to_list(cls, root: T) -> List[Optional[int]]:
+        """
+        Convert a binary tree to a list representation.
+        
+        Args:
+            root: Root node of the binary tree
+            
+        Returns:
+            List representation of the binary tree with None for empty nodes
+        """
+        if not root:
+            return []
+            
+        result = []
+        queue = deque([root])
+        
+        while queue:
+            node = queue.popleft()
+            if node:
+                result.append(node.val)
+                queue.append(node.left)
+                queue.append(node.right)
+            else:
+                result.append(None)
+                
+        # Remove trailing None values
+        while result and result[-1] is None:
+            result.pop()
+            
+        return result
