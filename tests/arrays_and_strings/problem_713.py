@@ -39,6 +39,18 @@ class Solution:
             ans += right - left + 1
         return ans
 
+    def maxSubarraySum(self, nums: List[int], k: int) -> int:
+        curr = 0
+        for i in range(k):
+            curr += nums[i]
+
+        ans = curr
+        for i in range(k, len(nums)):
+            curr += nums[i] - nums[i - k]
+            ans = max(ans, curr)
+
+        return ans
+
 
 @pytest.fixture
 def solution():

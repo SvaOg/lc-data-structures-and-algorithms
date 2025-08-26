@@ -18,22 +18,22 @@ Constraints:
 0 <= cards[i] <= 10^6
 """
 
+from turtle import position
 from typing import List
+from collections import defaultdict
 import pytest
 
 
 class Solution:
     def minimumCardPickup(self, cards: List[int]) -> int:
-        hashmap = {}
-        answer = len(cards) + 1
-        found = False
-        for pos, val in enumerate(cards):
-            if val in hashmap:
-                found = True
-                answer = min(answer, pos - hashmap[val] + 1)
-            hashmap[val] = pos
-        return answer if found else -1
-
+        ans = float("inf")
+        positions = {}
+        for i, card in enumerate(cards):
+            pos = positions.get(card, -1)
+            if pos >= 0:
+                ans = min(ans, i - pos + 1)
+            positions[card] = i
+        return ans if ans < float("inf") else -1
 
 @pytest.fixture
 def solution():
