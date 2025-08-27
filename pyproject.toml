@@ -28,7 +28,7 @@ where = ["src"]
 "*" = ["py.typed"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["tests", "problems"]
 python_files = ["test_*.py", "*_test.py", "problem_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
