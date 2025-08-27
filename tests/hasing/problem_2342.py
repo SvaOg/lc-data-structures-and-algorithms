@@ -33,21 +33,19 @@ class Solution:
         def get_digit_sum(num):
             sum = 0
             while num:
-                digit = num % 10
-                sum += digit
+                sum += num % 10
                 num //= 10
             return sum
 
-        hashmap = defaultdict(list)
-        for i, val in enumerate(nums):
-            hashmap[get_digit_sum(val)].append(val)
-
         ans = -1
 
-        for arr in hashmap.values():
-            if len(arr) > 1:
-                arr.sort(reverse=True)
-                ans = max(ans, arr[0] + arr[1])
+        dic = {}
+        for n in nums:
+            key = get_digit_sum(n)
+            curr = dic.get(key, -1)
+            if curr >= 0:
+                ans = max(ans, n + curr)
+            dic[key] = max(n, curr)
 
         return ans
 
