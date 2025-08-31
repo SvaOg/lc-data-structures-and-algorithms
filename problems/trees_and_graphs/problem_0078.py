@@ -25,18 +25,20 @@ import pytest
 
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        def backtrack(subset, idx):
-            if idx == len(nums):
-                result.append(subset[:])
-                return
-            include = subset[:]
-            include.append(nums[idx])
-            exclude = subset[:]
-            backtrack(include, idx + 1)
-            backtrack(exclude, idx + 1)
-
         result = []
+
+        def backtrack(curr, i):
+            if i > len(nums):
+                return
+
+            result.append(curr[:])
+            for j in range(i, len(nums)):
+                curr.append(nums[j])
+                backtrack(curr, j + 1)
+                curr.pop()
+
         backtrack([], 0)
+
         return result
 
 

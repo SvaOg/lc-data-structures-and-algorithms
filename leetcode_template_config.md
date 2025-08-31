@@ -114,4 +114,4 @@ When asked to create a template for a specific LeetCode problem:
 5. **Follow this exact structure** for consistency
 
 ## Example Reference
-See `tests/trees_and_graphs/problem_0079.py` for the complete working example of this template structure.
+See `problems/trees_and_graphs/problem_0079.py` for the complete working example of this template structure.
