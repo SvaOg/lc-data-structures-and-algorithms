@@ -41,39 +41,42 @@ Problem link: https://leetcode.com/problems/k-radius-subarray-averages/
 from typing import List
 import pytest
 
+
 class Solution:
     def getAverages(self, nums: List[int], k: int) -> List[int]:
-        """
-        Given an integer array nums and an integer k, return an array avgs where avgs[i] is the k-radius average for the subarray centered at i.
-        If there are less than k elements before or after i, avgs[i] is -1.
-
-        :param nums: List[int] - The input array.
-        :param k: int - The radius.
-        :return: List[int] - The k-radius averages.
-        """
         n = len(nums)
-        avgs = [-1] * n
+        prefix = [nums[0]]
+        for i in range(1, n):
+            prefix.append(prefix[-1] + nums[i])
 
-        curr_sum = nums[0]
-        for i in range(1, len(nums) - k):
+        avgs = [-1] * n
+        for pos in range(k, n - k):
+            left = pos - k
+            right = pos + k
+            delta = prefix[left - 1] if left else 0
+            avgs[pos] = (prefix[right] - delta) // (2 * k + 1)
 
         return avgs
+
 
 @pytest.fixture
 def sln():
     return Solution()
 
+
 def test_example_1(sln):
-    nums = [7,4,3,9,1,8,5,2,6]
+    nums = [7, 4, 3, 9, 1, 8, 5, 2, 6]
     k = 3
-    expected = [-1,-1,-1,5,4,4,-1,-1,-1]
+    expected = [-1, -1, -1, 5, 4, 4, -1, -1, -1]
     assert sln.getAverages(nums, k) == expected
+
 
 def test_example_2(sln):
     nums = [100000]
     k = 0
     expected = [100000]
     assert sln.getAverages(nums, k) == expected
+
 
 def test_example_3(sln):
     nums = [8]
