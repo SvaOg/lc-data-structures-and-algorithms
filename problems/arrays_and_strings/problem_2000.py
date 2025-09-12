@@ -38,13 +38,11 @@ import pytest
 
 class Solution:
     def reversePrefix(self, word: str, ch: str) -> str:
-        buffer = list(word)
-
-        for pos in range(len(buffer)):
-            if buffer[pos] == ch:
-                break
-        else:
+        pos = word.find(ch)
+        if pos == -1:
             return word
+
+        buffer = list(word)
 
         p1, p2 = 0, pos
         while p1 < p2:
