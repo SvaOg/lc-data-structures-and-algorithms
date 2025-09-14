@@ -10,5 +10,5 @@ Write code to work on LeetCode problem according to instructions in the file lee
 Extract the problem number from the current file's name.
 Provide the full problem's descriptions, including examples.
 Provide class Solution with the required method declaration. Use pass as a method's body.
-Create test cases (pytest) from examples (one test case per example) 
+Create test cases (pytest) from examples (one test case function per example) 
 """
