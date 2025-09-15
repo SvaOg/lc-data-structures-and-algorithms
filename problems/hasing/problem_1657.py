@@ -38,7 +38,6 @@ Constraints:
 - word1 and word2 contain only lowercase English letters.
 """
 
-
 from collections import Counter
 
 
@@ -47,16 +46,16 @@ class Solution:
         # Since we can't add or remove characters
         if len(word1) != len(word2):
             return False
-        
+
         # Since we can't transform one character into non-existing character
         if set(word1) != set(word2):
             return False
-        
+
         # Operation 1 allows us to freely sort strings, so we don't care about order of chars
-        
+
         # Operation 2 allows us to swap frequencies
         # It means that we can't modify the frequency values, we can just rearrange them
-        
+
         return sorted(Counter(word1).values()) == sorted(Counter(word2).values())
 
 
