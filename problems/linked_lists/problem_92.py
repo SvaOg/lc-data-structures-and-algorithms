@@ -33,6 +33,41 @@ class Solution:
         if not head:
             return None
 
+        # Move two pointers until they reach the starting position in the list
+        curr, prev = head, None
+
+        while left > 1:
+            prev = curr
+            curr = curr.next
+            left, right = left - 1, right - 1
+
+        # The two pointers that will fix the final connection
+        conn, tail = prev, curr
+
+        # Iteratively reverse the nodes until right becomes 0
+        while right:
+            third = curr.next
+            curr.next = prev
+            prev, curr = curr, third
+            right -= 1
+
+        # Adjust the final connection
+        if conn:
+            conn.next = prev
+        else:
+            head = prev
+
+        tail.next = curr
+
+        return head
+
+    def reverseBetween1(
+        self, head: Optional[ListNode], left: int, right: int
+    ) -> Optional[ListNode]:
+
+        if not head:
+            return None
+
         left_node = head
         stop = False
 
@@ -64,7 +99,7 @@ class Solution:
 
         return head
 
-    def reverseBetween1(
+    def reverseBetween2(
         self, head: Optional[ListNode], left: int, right: int
     ) -> Optional[ListNode]:
         left_node = head
