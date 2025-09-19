@@ -16,3 +16,7 @@ def test_002():
     a = [1, 2, 3]
     a.append(4)
     assert a == [1, 2, 3, 4]
+
+def test_003():
+    stack = []
+    assert stack.pop() is None
