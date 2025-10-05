@@ -37,18 +37,41 @@ Constraints:
 class Solution:
     def asteroidCollision(self, asteroids: list[int]) -> list[int]:
         stack = []
+
+        for n in asteroids:
+            if n > 0:
+                stack.append(n)
+            else:
+                destroyed = False
+                while not destroyed and stack and stack[-1] > 0:
+                    if -n > stack[-1]:
+                        stack.pop()
+                    elif -n == stack[-1]:
+                        stack.pop()
+                        destroyed = True
+                    else:
+                        destroyed = True
+                if not destroyed:
+                    stack.append(n)
+
+        return stack
+
+    def asteroidCollision1(self, asteroids: list[int]) -> list[int]:
+        stack = []
         for n in asteroids:
             stack.append(n)
 
             while len(stack) > 1 and stack[-2] > 0 and stack[-1] < 0:
+                # Process collisions
                 n1, n2 = stack[-2:]
-                stack.pop()
-                stack.pop()
 
                 if abs(n1) > abs(n2):
-                    stack.append(n1)
-                elif abs(n1) < abs(n2):
-                    stack.append(n2)
+                    stack.pop()
+                else:
+                    stack.pop()
+                    stack.pop()
+                    if abs(n1) < abs(n2):
+                        stack.append(n2)
 
         return stack
 
