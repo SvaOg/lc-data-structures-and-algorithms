@@ -13,7 +13,7 @@ Example 2:
 
 Input: root = [1,null,2]
 Output: 2
- 
+
 
 Constraints:
 
@@ -27,9 +27,24 @@ from typing import List, Optional
 
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-        if not root:
-            return 0
-        return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
+        stack = [(root, 1)]
+        ans = 0
+        while stack:
+            node, depth = stack.pop()
+            ans = max(ans, depth)
+            if node.left:
+                stack.append((node.left, depth + 1))
+            if node.right:
+                stack.append((node.right, depth + 1))
+        return ans
+
+    def maxDepth_recursive(self, root: Optional[TreeNode]) -> int:
+        def dfs(node):
+            if node is None:
+                return 0
+            return 1 + max(dfs(node.left), dfs(node.right))
+
+        return dfs(root)
 
 
 def test_001():

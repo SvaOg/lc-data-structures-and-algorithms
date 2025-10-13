@@ -23,29 +23,52 @@ from typing import List, Optional
 
 
 class Solution:
+    def minDepth_recursive(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+
+        min_depth = float("inf")
+
+        def dfs(node, depth):
+            nonlocal min_depth
+
+            if node is None:
+                return
+
+            if depth >= min_depth:
+                return
+
+            if node.left is None and node.right is None:
+                min_depth = min(min_depth, depth)
+                return
+
+            dfs(node.left, depth + 1)
+            dfs(node.right, depth + 1)
+
+        dfs(root, 1)
+
+        return min_depth
+
     def minDepth(self, root: Optional[TreeNode]) -> int:
         if not root:
             return 0
 
-        min_depth = None
+        min_depth = float("inf")
 
         stack = [(root, 1)]
         while stack:
             node, depth = stack.pop()
+            if depth >= min_depth:
+                continue
 
             if not node.left and not node.right:
-                if min_depth is None:
-                    min_depth = depth
-                else:
-                    min_depth = min(min_depth, depth)
-
-            if min_depth is not None and depth > min_depth:
+                min_depth = min(min_depth, depth)
                 continue
-            else:
-                if node.left:
-                    stack.append((node.left, depth + 1))
-                if node.right:
-                    stack.append((node.right, depth + 1))
+
+            if node.left:
+                stack.append((node.left, depth + 1))
+            if node.right:
+                stack.append((node.right, depth + 1))
 
         return min_depth
 
