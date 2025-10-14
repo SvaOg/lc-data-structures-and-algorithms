@@ -35,26 +35,26 @@ class Solution:
             Minimum absolute difference between any two node values
         """
 
-        last_val = None
-        min_abs_diff = float("inf")
+        values = []
 
         def inorder_dfs(node):
-            nonlocal last_val, min_abs_diff
-
             if node is None:
                 return
 
             inorder_dfs(node.left)
 
-            if last_val is not None:
-                min_abs_diff = min(min_abs_diff, abs(node.val - last_val))
-            last_val = node.val
+            nonlocal values
+            values.append(node.val)
 
             inorder_dfs(node.right)
 
         inorder_dfs(root)
 
-        return min_abs_diff
+        ans = float("inf")
+        for n in range(len(values) - 1):
+            ans = min(ans, values[n + 1] - values[n])
+
+        return ans
 
 
 def test_001():
