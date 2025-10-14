@@ -29,18 +29,13 @@ class Solution:
 
         queue = deque([root])
         while queue:
-            nodes_in_current_level = len(queue)
-
-            level_max_value = queue[0].val
-            for _ in range(nodes_in_current_level):
+            ans.append(max([n.val for n in queue]))
+            for n in range(len(queue)):
                 node = queue.popleft()
-                level_max_value = max(level_max_value, node.val)
                 if node.left:
                     queue.append(node.left)
                 if node.right:
                     queue.append(node.right)
-
-            ans.append(level_max_value)
 
         return ans
 

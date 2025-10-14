@@ -28,28 +28,20 @@ class Solution:
         if not root:
             return None
 
-        deepest_leaves_sum = 0
+        ans = 0
 
         queue = deque([root])
         while queue:
-            nodes_in_current_level = len(queue)
-
-            current_leaves_sum = 0
-
-            for _ in range(nodes_in_current_level):
+            ans = 0
+            for i in range(len(queue)):
                 node = queue.popleft()
-
-                if not node.left and not node.right:
-                    current_leaves_sum += node.val
-
+                ans += node.val
                 if node.left:
                     queue.append(node.left)
                 if node.right:
                     queue.append(node.right)
 
-            deepest_leaves_sum = current_leaves_sum
-
-        return deepest_leaves_sum
+        return ans
 
 
 def test_001():

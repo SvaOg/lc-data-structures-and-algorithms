@@ -47,12 +47,12 @@ class Solution:
         while stack:
             node = stack.pop()
 
-            if low <= node.val and node.val <= high:
+            if low <= node.val <= high:
                 sum += node.val
 
-            if node.left:
+            if low < node.val and node.left:
                 stack.append(node.left)
-            if node.right:
+            if high > node.val and node.right:
                 stack.append(node.right)
 
         return sum

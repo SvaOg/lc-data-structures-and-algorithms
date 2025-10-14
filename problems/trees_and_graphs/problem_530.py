@@ -1,6 +1,6 @@
 """
 530. Minimum Absolute Difference in BST
-Given the root of a Binary Search Tree (BST), return the minimum absolute difference 
+Given the root of a Binary Search Tree (BST), return the minimum absolute difference
 between the values of any two different nodes in the tree.
 
 Example 1:
@@ -35,22 +35,26 @@ class Solution:
             Minimum absolute difference between any two node values
         """
 
+        last_val = None
+        min_abs_diff = float("inf")
+
         def inorder_dfs(node):
+            nonlocal last_val, min_abs_diff
+
             if node is None:
                 return
-            inorder_dfs(node.left)
-            values.append(node.val)
-            inorder_dfs(node.right)
-            return
 
-        values = []
+            inorder_dfs(node.left)
+
+            if last_val is not None:
+                min_abs_diff = min(min_abs_diff, abs(node.val - last_val))
+            last_val = node.val
+
+            inorder_dfs(node.right)
+
         inorder_dfs(root)
 
-        min_diff = float("inf")
-        for i in range(1, len(values)):
-            min_diff = min(min_diff, values[i] - values[i - 1])
-
-        return min_diff
+        return min_abs_diff
 
 
 def test_001():
