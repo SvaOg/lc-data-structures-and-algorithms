@@ -1,10 +1,10 @@
 """
 701. Insert into a Binary Search Tree
-You are given the root node of a binary search tree (BST) and a value to insert into the tree. 
-Return the root node of the BST after the insertion. It is guaranteed that the new value does 
+You are given the root node of a binary search tree (BST) and a value to insert into the tree.
+Return the root node of the BST after the insertion. It is guaranteed that the new value does
 not exist in the original BST.
 
-Notice that there may exist multiple valid ways for the insertion, as long as the tree remains 
+Notice that there may exist multiple valid ways for the insertion, as long as the tree remains
 a BST after insertion. You can return any of them.
 
 Example 1:
@@ -46,24 +46,19 @@ class Solution:
         Returns:
             Root of the BST after insertion
         """
-        queue = deque([root])
-        while queue:
-            curr_level_node_count = len(queue)
-            for _ in range(curr_level_node_count):
-                node = queue.popleft()
-                
-                if not node.left and val < node.val:
-                    node.left = TreeNode(val)
-                    return root
-                
-                if not node.right and val > node.val:
-                    node.right = TreeNode(val)
-                    return root
 
-                if node.left and val < node.val:
-                    queue.append(node.left)
-                if node.right and val > node.val:
-                    queue.append(node.right)
+        def insert(node, val):
+            if node is None:
+                return TreeNode(val)
+
+            if val < node.val:
+                node.left = insert(node.left, val)
+            elif val > node.val:
+                node.right = insert(node.right, val)
+
+            return node
+
+        return insert(root, val)
 
 
 def isValidBST(root: Optional[TreeNode]) -> bool:
