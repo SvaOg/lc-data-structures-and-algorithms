@@ -36,6 +36,30 @@ from collections import deque
 
 class Solution:
     def insertIntoBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
+        if root is None:
+            return TreeNode(val)
+
+        node = root
+        while True:
+            if val < node.val:
+                if node.left:
+                    node = node.left
+                else:
+                    node.left = TreeNode(val)
+                    break
+            elif val > node.val:
+                if node.right:
+                    node = node.right
+                else:
+                    node.right = TreeNode(val)
+                    break
+            else:
+                return root
+        return root
+
+    def insertIntoBST_recursive(
+        self, root: Optional[TreeNode], val: int
+    ) -> Optional[TreeNode]:
         """
         Insert a value into the binary search tree and return the root.
 
