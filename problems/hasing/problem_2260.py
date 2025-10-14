@@ -18,7 +18,6 @@ Constraints:
 0 <= cards[i] <= 10^6
 """
 
-from turtle import position
 from typing import List
 from collections import defaultdict
 import pytest
@@ -34,6 +33,7 @@ class Solution:
                 ans = min(ans, i - pos + 1)
             positions[card] = i
         return ans if ans < float("inf") else -1
+
 
 @pytest.fixture
 def solution():
