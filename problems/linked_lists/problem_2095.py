@@ -38,7 +38,7 @@ Constraints:
 """
 
 from typing import Optional
-from src.my_leetcode.linked_lists import (
+from .linked_lists import (
     ListNode,
     build_linked_list,
     linked_list_to_list,
@@ -77,11 +77,13 @@ def test_example_1_1():
     result = Solution().deleteMiddle(head)
     assert linked_list_to_list(result) == expected
 
+
 def test_example_2():
     input_list, expected = [1, 2, 3], [1, 3]
     head = build_linked_list(input_list)
     result = Solution().deleteMiddle(head)
     assert linked_list_to_list(result) == expected
+
 
 def test_example_2_1():
     input_list, expected = [1, 2, 3, 4], [1, 2, 4]

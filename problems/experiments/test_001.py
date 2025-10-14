@@ -1,3 +1,5 @@
+import pytest
+
 def get_digit_sum(num):
     sum = 0
     while num:
@@ -19,4 +21,5 @@ def test_002():
 
 def test_003():
     stack = []
-    assert stack.pop() is None
+    with pytest.raises(IndexError):
+        stack.pop()

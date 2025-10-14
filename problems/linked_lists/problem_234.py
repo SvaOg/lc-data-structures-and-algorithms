@@ -20,7 +20,7 @@ Follow up: Could you do it in O(n) time and O(1) space?
 """
 
 from typing import Optional
-from src.my_leetcode.linked_lists import (
+from .linked_lists import (
     ListNode,
     build_linked_list,
     linked_list_to_list,

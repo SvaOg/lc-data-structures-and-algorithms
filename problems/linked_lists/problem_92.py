@@ -22,7 +22,7 @@ Follow up: Could you do it in one pass?
 """
 
 from typing import Optional, List
-from my_leetcode.linked_lists import ListNode, linked_list_to_list, build_linked_list
+from .linked_lists import ListNode, linked_list_to_list, build_linked_list
 
 
 class Solution:

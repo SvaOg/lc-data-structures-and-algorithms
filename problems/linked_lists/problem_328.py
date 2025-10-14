@@ -24,7 +24,7 @@ Constraints:
 """
 
 from typing import Optional
-from src.my_leetcode.linked_lists import (
+from .linked_lists import (
     ListNode,
     build_linked_list,
     linked_list_to_list,
