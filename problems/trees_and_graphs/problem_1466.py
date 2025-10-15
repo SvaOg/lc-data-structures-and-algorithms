@@ -23,25 +23,74 @@ Example 3:
 Input: n = 3, connections = [[1,0],[2,0]]
 Output: 0
 """
+
+from collections import defaultdict
 from typing import List
 
 
 class Solution:
     def minReorder(self, n: int, connections: List[List[int]]) -> int:
-        pass
+        ans = 0
+        seen = set([0])
+
+        def dfs(node_idx):
+            nonlocal ans, seen
+            for neighbor_idx, edge in graph[node_idx]:
+                if neighbor_idx in seen:
+                    continue
+                if edge[0] == node_idx:
+                    ans += 1
+                seen.add(neighbor_idx)
+                dfs(neighbor_idx)
+
+        graph = defaultdict(list)
+        for x, y in connections:
+            graph[x].append((y, (x, y)))
+            graph[y].append((x, (x, y)))
+
+        dfs(0)
+
+        return ans
+
+    def minReorder1(self, n: int, connections: List[List[int]]) -> int:
+        def dfs(node_idx):
+            nonlocal ans
+            for neighbor_idx in graph[node_idx]:
+                if neighbor_idx in seen:
+                    continue
+                away_edge = (node_idx, neighbor_idx)
+                if away_edge in connections:
+                    ans += 1
+                seen.add(neighbor_idx)
+                dfs(neighbor_idx)
+
+        connections = set((x, y) for x, y in connections)
+
+        graph = defaultdict(list)
+        for x, y in connections:
+            graph[x].append(y)
+            graph[y].append(x)
+
+        ans = 0
+        seen = set([0])
+        dfs(0)
+
+        return ans
 
 
 def test_001():
     n = 6
-    connections = [[0,1],[1,3],[2,3],[4,0],[4,5]]
+    connections = [[0, 1], [1, 3], [2, 3], [4, 0], [4, 5]]
     assert Solution().minReorder(n, connections) == 3
+
 
 def test_002():
     n = 5
-    connections = [[1,0],[1,2],[3,2],[3,4]]
+    connections = [[1, 0], [1, 2], [3, 2], [3, 4]]
     assert Solution().minReorder(n, connections) == 2
+
 
 def test_003():
     n = 3
-    connections = [[1,0],[2,0]]
+    connections = [[1, 0], [2, 0]]
     assert Solution().minReorder(n, connections) == 0
