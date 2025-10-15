@@ -55,8 +55,8 @@ class MedianFinder:
     def findMedian(self) -> float:
         if len(self.min_heap) == len(self.max_heap):
             return (self.min_heap[0] - self.max_heap[0]) / 2
+        else:
             return -self.max_heap[0]
-
 
 @pytest.fixture
 def median_finder():
