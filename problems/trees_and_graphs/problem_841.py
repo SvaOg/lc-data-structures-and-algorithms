@@ -22,18 +22,30 @@ Input: rooms = [[1,3],[3,0,1],[2],[0]]
 Output: false
 Explanation: We can not enter room 2.
 """
+
 from typing import List
 
 
 class Solution:
     def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
-        pass
+        seen = {0}
+
+        def dfs(room):
+            for next_room in rooms[room]:
+                if next_room not in seen:
+                    seen.add(next_room)
+                    dfs(next_room)
+
+        dfs(0)
+
+        return len(rooms) == len(seen)
 
 
 def test_001():
-    rooms = [[1],[2],[3],[]]
+    rooms = [[1], [2], [3], []]
     assert Solution().canVisitAllRooms(rooms) == True
 
+
 def test_002():
-    rooms = [[1,3],[3,0,1],[2],[0]]
+    rooms = [[1, 3], [3, 0, 1], [2], [0]]
     assert Solution().canVisitAllRooms(rooms) == False
