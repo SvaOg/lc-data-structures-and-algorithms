@@ -31,7 +31,10 @@ import pytest
 
 class Solution:
     def findSmallestSetOfVertices(self, n: int, edges: List[List[int]]) -> List[int]:
-        pass
+        all_verticies = set(range(n))
+        verticies_with_incoming_edges = set([j for _, j in edges])
+        return list(all_verticies - verticies_with_incoming_edges)
+
 
 @pytest.fixture
 def sln():
@@ -41,12 +44,13 @@ def sln():
 def test_001(sln):
     """Test the first example from the problem description."""
     n = 6
-    edges = [[0,1],[0,2],[2,5],[3,4],[4,2]]
+    edges = [[0, 1], [0, 2], [2, 5], [3, 4], [4, 2]]
     # The output can be in any order, so we sort both to compare.
-    assert sorted(sln.findSmallestSetOfVertices(n, edges)) == sorted([0,3])
+    assert sorted(sln.findSmallestSetOfVertices(n, edges)) == sorted([0, 3])
+
 
 def test_002(sln):
     """Test the second example from the problem description."""
     n = 5
-    edges = [[0,1],[2,1],[3,1],[1,4],[2,4]]
-    assert sorted(sln.findSmallestSetOfVertices(n, edges)) == sorted([0,2,3])
+    edges = [[0, 1], [2, 1], [3, 1], [1, 4], [2, 4]]
+    assert sorted(sln.findSmallestSetOfVertices(n, edges)) == sorted([0, 2, 3])
