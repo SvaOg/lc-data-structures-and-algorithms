@@ -30,6 +30,16 @@ from typing import List
 
 
 class Solution:
+    """
+    Key ideas:
+        - Initialize the queue with all coordinates of cells that contain 0.
+        - Track visited cells to avoid reprocessing.
+        - For each BFS level, increment the distance counter (level), and for
+          every dequeued cell, try to move in four directions (up, down, left, right).
+        - If a neighboring cell is unvisited, assign it the current distance (level),
+          mark it as visited, and add it to the queue.
+    """
+
     def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
         n = len(mat)
         m = len(mat[0])
