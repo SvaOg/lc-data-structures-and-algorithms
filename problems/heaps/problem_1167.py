@@ -34,27 +34,30 @@ Constraints:
 * 1 <= sticks.length <= 10^4
 * 1 <= sticks[i] <= 10^4
 """
-import heapq
+from heapq import heapify, heappop, heappush
 from typing import List
 import pytest
 
 
 class Solution:
     def connectSticks(self, sticks: List[int]) -> int:
-        if len(sticks) <= 1:
+        """
+        Keep connecting two shortest stick until we are done.
+        """
+        if not sticks or len(sticks) == 1:
             return 0
 
-        heapq.heapify(sticks)
-        total_cost = 0
+        heapify(sticks)
 
+        cost = 0
         while len(sticks) > 1:
-            stick1 = heapq.heappop(sticks)
-            stick2 = heapq.heappop(sticks)
-            cost = stick1 + stick2
-            total_cost += cost
-            heapq.heappush(sticks, cost)
+            new_stick = heappop(sticks) + heappop(sticks)
+            cost += new_stick
+            heappush(sticks, new_stick)
 
-        return total_cost
+        return cost
+
+
 
 
 @pytest.fixture
