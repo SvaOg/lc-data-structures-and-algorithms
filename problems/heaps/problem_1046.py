@@ -17,7 +17,7 @@ Return the weight of the last remaining stone. If there are no stones left, retu
 Example 1:
 Input: stones = [2,7,4,1,8,1]
 Output: 1
-Explanation: 
+Explanation:
 We combine 7 and 8 to get 1 so the array converts to [2,4,1,1,1] then,
 we combine 2 and 4 to get 2 so the array converts to [2,1,1,1] then,
 we combine 2 and 1 to get 1 so the array converts to [1,1,1] then,
@@ -39,13 +39,18 @@ import pytest
 
 class Solution:
     def lastStoneWeight(self, stones: List[int]) -> int:
+        """
+        On each smash, at least one rock is destroyed, so there can be at most n iterations.
+        At each iteration, we perform pops and pushes on the heap, which has a length of n at the start.
+        This gives us a time complexity of O(n*log n). The heap uses O(n) space.
+        """
         stones = [-i for i in stones]
-
         heapq.heapify(stones)
+
         while len(stones) > 1:
-            new_stone = -abs(heapq.heappop(stones) - heapq.heappop(stones))
-            if new_stone:
-                heapq.heappush(stones, new_stone)
+            stone1, stone2 = heapq.heappop(stones), heapq.heappop(stones)
+            if stone1 != stone2:
+                heapq.heappush(stones, -abs(stone1 - stone2))
 
         return -stones[0] if stones else 0
 

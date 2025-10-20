@@ -44,16 +44,18 @@ import pytest
 class Solution:
     def halveArray(self, nums: List[int]) -> int:
         target = sum(nums) / 2
+
         nums = [-n for n in nums]
         heapq.heapify(nums)
 
-        count = 0
+        steps = 0
         while target > 0:
-            count += 1
-            x = heapq.heappop(nums)
-            target += x / 2
-            heapq.heappush(nums, x / 2)
-        return count
+            steps += 1
+            half_max_element = -heapq.heappop(nums) / 2
+            heapq.heappush(nums, -half_max_element)
+            target -= half_max_element
+
+        return steps
 
 
 @pytest.fixture
