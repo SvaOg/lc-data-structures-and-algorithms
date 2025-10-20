@@ -43,20 +43,28 @@ from heapq import heappush, heappop
 
 class MedianFinder:
     def __init__(self):
-        self.max_heap = []
-        self.min_heap = []
+        self.small = []
+        self.large = []
 
     def addNum(self, num: int) -> None:
-        heappush(self.max_heap, -num)
-        heappush(self.min_heap, -heappop(self.max_heap))
-        if len(self.min_heap) > len(self.max_heap):
-            heappush(self.max_heap, -heappop(self.min_heap))
+        if not self.small or num <= -self.small[0]:
+            heappush(self.small, -num)
+        else:
+            heappush(self.large, num)
+        self.rebalance()
 
     def findMedian(self) -> float:
-        if len(self.min_heap) == len(self.max_heap):
-            return (self.min_heap[0] - self.max_heap[0]) / 2
+        if len(self.large) == len(self.small):
+            return (self.large[0] - self.small[0]) / 2
         else:
-            return -self.max_heap[0]
+            return -self.small[0]
+
+    def rebalance(self):
+        if len(self.large) > len(self.small):
+            heappush(self.small, -heappop(self.large))
+        elif len(self.small) - len(self.large) > 1:
+            heappush(self.large, -heappop(self.small))
+
 
 @pytest.fixture
 def median_finder():
