@@ -20,7 +20,7 @@ Constraints:
 Follow up: Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
 """
 
-from collections import defaultdict
+from collections import Counter, defaultdict
 from heapq import heappop, heappush
 from typing import List
 import pytest
@@ -28,17 +28,15 @@ import pytest
 
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        freq = defaultdict(int)
-        for v in nums:
-            freq[v] += 1
-
         heap = []
-        for e, f in freq.items():
-            heappush(heap, (f, e))
+
+        counter = Counter(nums)
+        for num, freq in counter.items():
+            heappush(heap, (freq, num))
             if len(heap) > k:
                 heappop(heap)
 
-        return [e for f, e in heap]
+        return [n for f, n in heap]
 
 
 @pytest.fixture
