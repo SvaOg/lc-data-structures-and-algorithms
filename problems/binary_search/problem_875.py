@@ -27,13 +27,34 @@ Constraints:
 - 1 <= piles[i] <= 10^9
 """
 
+from math import ceil
 from typing import List
 import pytest
 
 
 class Solution:
+    """
+    Binary search through solution space.
+    """
+
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
-        pass
+        def check(k):
+            hours = 0
+            for bananas in piles:
+                hours += ceil(bananas / k)
+            return hours <= h
+
+        left = 1
+        right = max(piles)
+        while left <= right:
+            mid = (left + right) // 2
+            if check(mid):
+                right = mid - 1
+            else:
+                left = mid + 1
+
+        return left
+
 
 @pytest.fixture
 def sln():
@@ -42,18 +63,20 @@ def sln():
 
 def test_001(sln):
     """Test the first example from the problem description."""
-    piles = [3,6,7,11]
+    piles = [3, 6, 7, 11]
     h = 8
     assert sln.minEatingSpeed(piles, h) == 4
 
+
 def test_002(sln):
     """Test the second example from the problem description."""
-    piles = [30,11,23,4,20]
+    piles = [30, 11, 23, 4, 20]
     h = 5
     assert sln.minEatingSpeed(piles, h) == 30
 
+
 def test_003(sln):
     """Test the third example from the problem description."""
-    piles = [30,11,23,4,20]
+    piles = [30, 11, 23, 4, 20]
     h = 6
     assert sln.minEatingSpeed(piles, h) == 23
