@@ -30,7 +30,6 @@ grid[0][0] == grid[m - 1][n - 1] == 0
 """
 
 from collections import deque
-from tkinter import N
 from typing import List
 import pytest
 
