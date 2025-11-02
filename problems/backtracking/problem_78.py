@@ -1,5 +1,9 @@
 """
 78. Subsets
+https://leetcode.com/problems/subsets/description/
+
+Editorial:
+https://leetcode.com/problems/subsets/editorial/
 
 Given an integer array nums of unique elements, return all possible subsets (the power set).
 
@@ -25,20 +29,61 @@ import pytest
 
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        result = []
+        """
+        Solution based on this comment:
+        https://leetcode.com/problems/subsets/description/comments/2407981/
+        """
+
+        def bit_patterns(num):
+            ans = []
+            curr_idx = 0
+            while num > 0:
+                if num & 1:
+                    ans.append(curr_idx)
+                num = num >> 1
+                curr_idx += 1
+            return ans
+
+        indexes = [bit_patterns(v) for v in range(2 ** len(nums))]
+
+        ans = []
+        for arr in indexes:
+            ans.append([nums[i] for i in arr])
+        return ans
+
+    def subsets1(self, nums: List[int]) -> List[List[int]]:
+        """
+        Backtracking solution from a course
+        """
 
         def backtrack(curr, i):
             if i > len(nums):
                 return
 
-            result.append(curr[:])
+            ans.append(curr[:])
+
             for j in range(i, len(nums)):
                 curr.append(nums[j])
                 backtrack(curr, j + 1)
                 curr.pop()
 
+        ans = [[]]
         backtrack([], 0)
+        return ans
 
+    def subsets2(self, nums: List[int]) -> List[List[int]]:
+        def backtrack(subset, idx):
+            if idx == len(nums):
+                result.append(subset[:])
+                return
+            include = subset[:]
+            include.append(nums[idx])
+            exclude = subset[:]
+            backtrack(include, idx + 1)
+            backtrack(exclude, idx + 1)
+
+        result = []
+        backtrack([], 0)
         return result
 
 
