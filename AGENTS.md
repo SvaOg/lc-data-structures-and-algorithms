@@ -4,7 +4,7 @@ These instructions apply to the entire repository. Use them when generating or e
 
 ## LeetCode Template Rules
 
-- File naming: `problem_xxxx.py` (4-digit no zero-padding, e.g., `problem_209.py`).
+- File naming: `problem_nnn.py` (no zero-padding, e.g., `problem_209.py` or `problem_1.py`).
 - Location: create files where the user requests. If not specified, ask for the target directory (commonly under `problems/<topic>/`).
 - Header: include full problem text from LeetCode training data:
   - First line: `[NUMBER]. [TITLE]`
