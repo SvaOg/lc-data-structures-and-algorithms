@@ -1,43 +1,80 @@
 # Agent Instructions
 
-These instructions apply to the entire repository. Use them when generating or editing LeetCode problem templates.
+These guidelines apply to every LeetCode problem template in this repository.
 
-## LeetCode Template Rules
+## Template Workflow
+1. Create the file using the `problem_nnn.py` naming (no zero padding).
+2. Work from the official LeetCode training data for the full description.
+3. Copy the exact method signature into `class Solution`; leave the body as `pass`.
+4. Add one pytest test per example from the description.
+5. Match the structure demonstrated in `problems/trees_and_graphs/problem_79.py`.
 
-- File naming: `problem_nnn.py` (no zero-padding, e.g., `problem_209.py` or `problem_1.py`).
-- Location: create files where the user requests. If not specified, ask for the target directory (commonly under `problems/<topic>/`).
-- Header: include full problem text from LeetCode training data:
-  - First line: `[NUMBER]. [TITLE]`
-  - Full description
-  - All examples as shown (Input/Output)
-  - Constraints
-  - Follow-up (if present)
-- Imports: `from typing import List` and `import pytest`.
-- Solution class:
-  - `class Solution:`
-  - Exact method signature from the problem with proper type hints.
-  - Method body must be `pass` (no implementation).
-- Pytest fixture:
-  - `@pytest.fixture`
-  - `def sln():` that yields `Solution()`.
-- Tests (one per example):
-  - Named `test_example_1`, `test_example_2`, `test_example_3`, ...
-  - Each takes `sln` and has a short docstring.
-  - Use simple `assert` comparing the call to the example’s expected output.
+## Template Rules
+- Place the file where the user requests; if unspecified, ask them to choose a `problems/<topic>/` directory.
+- The header must include `[NUMBER]. [TITLE]`, the complete description, every example (Input/Output), all constraints, and any follow-up text.
+- Use only these imports: `from typing import List` and `import pytest`.
+- Fixture: decorate `sln` with `@pytest.fixture` and yield `Solution()`.
+- Tests: name them sequentially `test_001`, `test_002`, …; each takes `sln`, includes a short docstring, and asserts the method call equals the example’s expected output; do not parameterize.
 
-## Do Not Include
+## File Skeleton
+Follow the exact layout below, adapting problem-specific details only:
 
+```python
+"""
+[PROBLEM_NUMBER]. [PROBLEM_TITLE]
+
+[PROBLEM_DESCRIPTION]
+
+Example 1:
+[EXAMPLE_1_INPUT]
+Output: [EXAMPLE_1_OUTPUT]
+
+...
+
+Example N:
+[EXAMPLE_N_INPUT]
+Output: [EXAMPLE_N_OUTPUT]
+
+...
+
+Constraints:
+[CONSTRAINTS]
+"""
+
+from typing import List
+import pytest
+
+
+class Solution:
+    def [METHOD_NAME](self, [PARAMETERS]) -> [RETURN_TYPE]:
+        pass
+
+
+@pytest.fixture
+def sln():
+    yield Solution()
+
+
+def test_001(sln):
+    """Test the first example from the problem description."""
+    [TEST_1_CODE]
+    assert sln.[METHOD_NAME]([PARAMETERS]) == [EXPECTED_RESULT]
+
+
+def test_002(sln):
+    """Test the second example from the problem description."""
+    [TEST_2_CODE]
+    assert sln.[METHOD_NAME]([PARAMETERS]) == [EXPECTED_RESULT]
+
+# Add more tests for remaining examples.
+```
+
+## Prohibited Items
 - No `if __name__ == "__main__"` block.
-- No algorithm implementation (keep method body as `pass`).
-- No complex test logic.
+- No algorithm implementation—leave the solution method as `pass`.
+- No complex or parameterized pytest logic.
 
-## Conventions and Tips
-
-- Extract the problem number from the filename or the user request; do not zero‑pad.
-- Mirror the structure demonstrated by `problems/trees_and_graphs/problem_79.py`.
-- When unsure about destination folder, ask the user to choose a category under `problems/`.
-
-## Source of Truth
-
-- Follow `leetcode_template_config.md` for exact structure and requirements.
-
+## Additional Tips
+- Always mirror the formatting of `problem_79.py`.
+- Derive the problem number from the filename or request without zero padding.
+- Confirm the destination directory with the user when unclear.
