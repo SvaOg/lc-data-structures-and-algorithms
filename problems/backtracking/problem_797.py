@@ -29,6 +29,11 @@ import pytest
 
 class Solution:
     def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
+        """
+        Time complexity is O(N*2**N)
+        Space complexity is N
+        """
+
         def backtrack(curr):
             node = curr[-1]
             if curr[-1] == n - 1:
