@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pytest:*)",
+      "Bash(.venv/Scripts/python -m pytest:*)",
+      "Bash(for dir in \"D:\\\\Courses\\\\lc-data-structures-and-algorithms\\\\problems\"/*)",
+      "Bash(do if [ -d \"$dir\" ])"
+    ]
+  }
+}
