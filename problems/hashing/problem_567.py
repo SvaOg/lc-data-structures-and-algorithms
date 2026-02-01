@@ -54,7 +54,7 @@ class Solution:
             if freq1 == freq2:
                 return True
 
-            start +=1
+            start += 1
             end += 1
 
         return False

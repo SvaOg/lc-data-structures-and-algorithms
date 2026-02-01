@@ -39,7 +39,6 @@ Follow-up: Can you implement the queue such that each operation is amortized O(1
 
 
 class MyQueue:
-
     def __init__(self):
         self.stack1 = []
         self.stack2 = []
@@ -66,7 +65,6 @@ class MyQueue:
 
 
 class MyQueue1:
-
     def __init__(self):
         self.stack1 = []
         self.stack2 = []

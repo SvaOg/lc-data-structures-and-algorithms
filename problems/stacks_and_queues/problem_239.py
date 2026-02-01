@@ -58,7 +58,6 @@ class Solution:
         return answer
 
     def maxSlidingWindow_deque(self, nums: List[int], k: int) -> List[int]:
-
         queue = deque()
         for n in range(k):
             val = nums[n]

@@ -49,16 +49,19 @@ class Solution:
 
 def test_example_1():
     s = Solution()
-    root = TreeNode.create_from_list([5,4,8,11,None,13,4,7,2,None,None,None,1])
+    root = TreeNode.create_from_list(
+        [5, 4, 8, 11, None, 13, 4, 7, 2, None, None, None, 1]
+    )
     assert s.hasPathSum(root, 22) == True
+
 
 def test_example_2():
     s = Solution()
-    root = TreeNode.create_from_list([1,2,3])
+    root = TreeNode.create_from_list([1, 2, 3])
     assert s.hasPathSum(root, 5) == False
+
 
 def test_example_3():
     s = Solution()
     root = TreeNode.create_from_list([])
     assert s.hasPathSum(root, 0) == False
-

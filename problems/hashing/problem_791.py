@@ -11,16 +11,16 @@ Return any permutation of s that satisfies this property.
 Example 1:
 Input: order = "cba", s = "abcd"
 Output: "cbad"
-Explanation: 
-"a", "b", "c" appear in order, so they are sorted as "c", "b", "a". 
-"d" does not appear in order, so it can be at any position in the returned string. 
+Explanation:
+"a", "b", "c" appear in order, so they are sorted as "c", "b", "a".
+"d" does not appear in order, so it can be at any position in the returned string.
 "cbad", "bcad", "cbda", "bacd", "acbd", "abcd" are all valid outputs.
 
 Example 2:
 Input: order = "bcafg", s = "abcd"
 Output: "bcad"
-Explanation: 
-"b", "c", "a" appear in order, so they are sorted as "b", "c", "a". 
+Explanation:
+"b", "c", "a" appear in order, so they are sorted as "b", "c", "a".
 "d" does not appear in order, so it can be at any position in the returned string.
 
 Constraints:
@@ -48,9 +48,11 @@ class Solution:
 
 import pytest
 
+
 @pytest.fixture
 def solution():
     return Solution()
+
 
 def test_example_1(solution):
     order = "cba"
@@ -59,17 +61,18 @@ def test_example_1(solution):
     result = solution.customSortString(order, s)
     # Check that result is a permutation of s and c, b, a are in order
     assert sorted(result) == sorted(s)
-    c_idx = result.find('c')
-    b_idx = result.find('b')
-    a_idx = result.find('a')
+    c_idx = result.find("c")
+    b_idx = result.find("b")
+    a_idx = result.find("a")
     assert c_idx < b_idx < a_idx
+
 
 def test_example_2(solution):
     order = "bcafg"
     s = "abcd"
     result = solution.customSortString(order, s)
     assert sorted(result) == sorted(s)
-    b_idx = result.find('b')
-    c_idx = result.find('c')
-    a_idx = result.find('a')
+    b_idx = result.find("b")
+    c_idx = result.find("c")
+    a_idx = result.find("a")
     assert b_idx < c_idx < a_idx

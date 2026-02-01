@@ -25,25 +25,31 @@ Constraints:
 from collections import Counter
 from typing import List
 
+
 class Solution:
     def uniqueOccurrences(self, arr: List[int]) -> bool:
         freq = Counter(arr).values()
         return len(freq) == len(set(freq))
 
+
 import pytest
+
 
 @pytest.fixture
 def solution():
     return Solution()
 
+
 def test_example_1(solution):
-    arr = [1,2,2,1,1,3]
+    arr = [1, 2, 2, 1, 1, 3]
     assert solution.uniqueOccurrences(arr) == True
 
+
 def test_example_2(solution):
-    arr = [1,2]
+    arr = [1, 2]
     assert solution.uniqueOccurrences(arr) == False
 
+
 def test_example_3(solution):
-    arr = [-3,0,1,-3,1,1,1,-3,10,0]
+    arr = [-3, 0, 1, -3, 1, 1, 1, -3, 10, 0]
     assert solution.uniqueOccurrences(arr) == True

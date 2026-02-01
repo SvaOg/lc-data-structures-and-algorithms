@@ -50,7 +50,7 @@ class Solution:
             largest_pile = -heappop(piles)
             new_pile = largest_pile - (largest_pile // 2)
             heappush(piles, -new_pile)
-        
+
         return -sum(piles)
 
 

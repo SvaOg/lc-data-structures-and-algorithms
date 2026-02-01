@@ -18,7 +18,7 @@ Note:
 Example 1:
 Input: s = "leet**cod*e"
 Output: "lecoe"
-Explanation: 
+Explanation:
 - Remove the closest non-star character to the left of the first star, as well as the star itself, "leet**cod*e" becomes "lee*cod*e".
 - Remove the closest non-star character to the left of the second star, as well as the star itself, "lee*cod*e" becomes "lecod*e".
 - Remove the closest non-star character to the left of the third star, as well as the star itself, "lecod*e" becomes "lecoe".
@@ -27,7 +27,7 @@ There are no more stars, so we return "lecoe".
 Example 2:
 Input: s = "erase*****"
 Output: ""
-Explanation: 
+Explanation:
 - The entire string is removed, so we return an empty string.
 
 Constraints:
@@ -35,6 +35,7 @@ Constraints:
 - s consists of lowercase English letters and stars '*'.
 - The operation above can be performed on s.
 """
+
 
 class Solution:
     def removeStars(self, s: str) -> str:
@@ -49,6 +50,7 @@ class Solution:
 
 import pytest
 
+
 def test_example_1():
     """
     Example 1:
@@ -57,6 +59,7 @@ def test_example_1():
     """
     sol = Solution()
     assert sol.removeStars("leet**cod*e") == "lecoe"
+
 
 def test_example_2():
     """

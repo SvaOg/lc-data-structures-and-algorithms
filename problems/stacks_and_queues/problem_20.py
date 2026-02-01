@@ -37,7 +37,7 @@ Constraints:
 class Solution:
     def isValid(self, s: str) -> bool:
         pairs = {"(": ")", "[": "]", "{": "}"}
-        
+
         stack = []
         for ch in s:
             if ch in pairs:
@@ -53,7 +53,7 @@ class Solution:
 
     def isValid1(self, s: str) -> bool:
         pairs = {")": "(", "]": "[", "}": "{"}
-        
+
         stack = []
         for ch in s:
             match ch:
@@ -64,7 +64,6 @@ class Solution:
                         return False
 
         return len(stack) == 0
-
 
 
 import pytest

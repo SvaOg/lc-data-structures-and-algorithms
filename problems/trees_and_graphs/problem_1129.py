@@ -34,7 +34,6 @@ class Solution:
     def shortestAlternatingPaths(
         self, n: int, redEdges: List[List[int]], blueEdges: List[List[int]]
     ) -> List[int]:
-
         RED, BLUE = 0, 1
 
         red_graph = defaultdict(list)

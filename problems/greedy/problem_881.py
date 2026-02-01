@@ -29,7 +29,7 @@ import pytest
 class Solution:
     def numRescueBoats(self, people: List[int], limit: int) -> int:
         people.sort(reverse=True)
-        
+
         left, right = 0, len(people) - 1
         boats = 0
         while True:
@@ -41,7 +41,7 @@ class Solution:
             left += 1
 
         return boats
-        
+
 
 @pytest.fixture
 def sln():

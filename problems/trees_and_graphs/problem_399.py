@@ -47,7 +47,6 @@ class Solution:
     def calcEquation(
         self, equations: List[List[str]], values: List[float], queries: List[List[str]]
     ) -> List[float]:
-
         graph = {}
         for (var1, var2), val in zip(equations, values):
             graph.setdefault(var1, {}).update({var2: val})

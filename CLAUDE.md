@@ -10,19 +10,19 @@ Python repository for LeetCode's Interview Crash Course - Data Structures and Al
 
 ```bash
 # Run all tests
-python -m pytest
+.venv\Scripts\python -m pytest
 
 # Run a single problem's tests
-python -m pytest problems/trees_and_graphs/problem_721.py
+.venv\Scripts\python -m pytest problems/trees_and_graphs/problem_721.py
 
 # Run all tests in a category
-python -m pytest problems/dynamic_programming/
-
+.venv\Scripts\python -m pytest problems/dynamic_programming/
+	
 # Run with verbose output
-python -m pytest -v
+.venv\Scripts\python -m pytest -v
 
 # Format code
-black .
+ruff format .
 ```
 
 Requires Python >= 3.12. The virtual environment is at `.venv/`.
@@ -44,13 +44,13 @@ When creating a new problem template:
 
 - Filename: `problem_NNN.py` (no zero-padding)
 - Header docstring: `[NUMBER]. [TITLE]`, full description, all examples, constraints, follow-ups
-- Imports: only `from typing import List` and `import pytest`
+- Imports: only `import pytest`
 - `class Solution` with correct method signature; body is `pass` (no implementation)
 - `@pytest.fixture` named `sln` yielding `Solution()`
 - One `test_NNN(sln)` per example, sequential naming, each with a short docstring
 - No `if __name__ == "__main__"`, no parametrize, no implementation
-- Canonical example: `problems/backtracking/problem_79.py`
-- Place files where the user requests; ask for `problems/<topic>/` directory if unspecified
+- Canonical example: `.claude/skills/problem/examples/problem_1768.py`
+- Place files where the user requests; place them in `problems/general/` directory if unspecified
 
 ## Pytest Configuration
 

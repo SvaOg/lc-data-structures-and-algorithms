@@ -64,7 +64,7 @@ class Solution:
 
         target = convert(target)
         seen = set(convert(s) for s in deadends)
-        
+
         start = (0, 0, 0, 0)
         if start in seen:
             return -1

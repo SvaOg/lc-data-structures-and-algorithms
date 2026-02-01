@@ -21,16 +21,18 @@ Constraints:
 from typing import Optional, List
 import pytest
 
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
 
+
 class Solution:
     def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if head is None or head.next is None:
             return head
-        
+
         curr = head
         while curr.next:
             if curr.val == curr.next.val:
@@ -39,6 +41,7 @@ class Solution:
                 curr = curr.next
 
         return head
+
 
 # Helper functions for testing
 def build_linked_list(values: List[int]) -> Optional[ListNode]:
@@ -51,6 +54,7 @@ def build_linked_list(values: List[int]) -> Optional[ListNode]:
         curr = curr.next
     return dummy.next
 
+
 def linked_list_to_list(head: Optional[ListNode]) -> List[int]:
     res = []
     while head:
@@ -58,16 +62,18 @@ def linked_list_to_list(head: Optional[ListNode]) -> List[int]:
         head = head.next
     return res
 
+
 def test_example_1():
     # Input: head = [1,1,2]
     # Output: [1,2]
-    head = build_linked_list([1,1,2])
+    head = build_linked_list([1, 1, 2])
     result = Solution().deleteDuplicates(head)
-    assert linked_list_to_list(result) == [1,2]
+    assert linked_list_to_list(result) == [1, 2]
+
 
 def test_example_2():
     # Input: head = [1,1,2,3,3]
     # Output: [1,2,3]
-    head = build_linked_list([1,1,2,3,3])
+    head = build_linked_list([1, 1, 2, 3, 3])
     result = Solution().deleteDuplicates(head)
-    assert linked_list_to_list(result) == [1,2,3]
+    assert linked_list_to_list(result) == [1, 2, 3]

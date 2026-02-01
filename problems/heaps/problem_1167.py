@@ -34,6 +34,7 @@ Constraints:
 * 1 <= sticks.length <= 10^4
 * 1 <= sticks[i] <= 10^4
 """
+
 from heapq import heapify, heappop, heappush
 from typing import List
 import pytest
@@ -58,8 +59,6 @@ class Solution:
         return cost
 
 
-
-
 @pytest.fixture
 def solution():
     return Solution()
@@ -72,11 +71,14 @@ def test_example_1(solution):
 def test_example_2(solution):
     assert solution.connectSticks([1, 8, 3, 5]) == 30
 
+
 def test_example_3(solution):
     assert solution.connectSticks([5]) == 0
+
 
 def test_empty_array(solution):
     assert solution.connectSticks([]) == 0
 
+
 def test_two_sticks(solution):
-    assert solution.connectSticks([1,2]) == 3
+    assert solution.connectSticks([1, 2]) == 3

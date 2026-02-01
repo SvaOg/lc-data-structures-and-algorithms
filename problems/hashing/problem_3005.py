@@ -36,7 +36,7 @@ class Solution:
             elif freq == max_freq:
                 count += 1
         return max_freq * count
-    
+
     def maxFrequencyElements2(self, nums: List[int]) -> int:
         sum = 0
 

@@ -42,7 +42,7 @@ class Solution:
         for ch, w in zip(pattern, words):
             if match1.setdefault(ch, w) != w or match2.setdefault(w, ch) != ch:
                 return False
-        
+
         return True
 
 

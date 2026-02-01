@@ -33,6 +33,7 @@ class Solution:
                 heappop(heap)
         return heap[0]
 
+
 def test_example1():
     nums = [3, 2, 1, 5, 6, 4]
     k = 2

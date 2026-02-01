@@ -55,7 +55,7 @@ class Solution:
            - The overall BFS time complexity is closer to O(N * L) for traversing all
              nodes/edges, resulting in a much faster total runtime.
         """
-        
+
         def patterns(word):
             arr = [ch for ch in word]
 
@@ -77,7 +77,7 @@ class Solution:
         found = False
 
         wordList.append(beginWord)
-        
+
         for i in range(len(wordList)):
             word = wordList[i]
             if word == endWord:
@@ -103,7 +103,9 @@ class Solution:
 
         return 0
 
-    def ladderLength_TLE(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
+    def ladderLength_TLE(
+        self, beginWord: str, endWord: str, wordList: List[str]
+    ) -> int:
         def distance(word1, word2):
             return sum(
                 1 if ord(ch2) - ord(ch1) != 0 else 0 for ch1, ch2 in zip(word1, word2)

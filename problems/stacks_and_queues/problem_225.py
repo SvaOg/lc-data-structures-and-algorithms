@@ -63,7 +63,6 @@ class MyStack:
 
 
 class MyStack1:
-
     def __init__(self):
         self.queue = deque()
 

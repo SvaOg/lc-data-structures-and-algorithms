@@ -49,10 +49,10 @@ class Solution:
         while right < len(s) - 1:
             if s[left] in vowels:
                 count -= 1
-            
+
             left += 1
             right += 1
-            
+
             if s[right] in vowels:
                 count += 1
 

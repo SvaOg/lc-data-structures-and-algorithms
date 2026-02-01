@@ -48,7 +48,8 @@ def test_example2():
     expected = 2
     assert Solution().findMaxLength(nums) == expected
 
+
 def test_example3():
-    nums = [0,1,1,1,1,1,0,0,0]
+    nums = [0, 1, 1, 1, 1, 1, 0, 0, 0]
     expected = 6
     assert Solution().findMaxLength(nums) == expected

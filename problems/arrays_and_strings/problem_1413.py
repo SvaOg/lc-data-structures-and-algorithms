@@ -26,7 +26,7 @@ Hence, the minimum startValue is 5.
 Example 2:
 Input: nums = [1,2]
 Output: 1
-Explanation: Minimum start value should be positive. 
+Explanation: Minimum start value should be positive.
 
 Example 3:
 Input: nums = [1,-2,-3]

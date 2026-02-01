@@ -8,7 +8,7 @@ Return true if the path crosses itself at any point, that is, if at any time you
 
 Example 1:
 Input: path = "NES"
-Output: false 
+Output: false
 Explanation: Notice that the path doesn't cross any point more than once.
 
 Example 2:
@@ -20,6 +20,7 @@ Constraints:
 - 1 <= path.length <= 10^4
 - path[i] is either 'N', 'S', 'E', or 'W'.
 """
+
 
 class Solution:
     def isPathCrossing(self, path: str) -> bool:
@@ -42,15 +43,19 @@ class Solution:
             visited.add(pos)
         return False
 
+
 import pytest
+
 
 @pytest.fixture
 def solution():
     return Solution()
 
+
 def test_example_1(solution):
     path = "NES"
     assert solution.isPathCrossing(path) == False
+
 
 def test_example_2(solution):
     path = "NESWW"

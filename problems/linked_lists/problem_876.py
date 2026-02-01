@@ -24,10 +24,12 @@ Constraints:
 from typing import Optional, List
 import pytest
 
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+
 
 class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
@@ -35,7 +37,7 @@ class Solution:
             return head
 
         fast = slow = head
-        
+
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
@@ -54,6 +56,7 @@ def build_linked_list(values: List[int]) -> Optional[ListNode]:
         curr = curr.next
     return dummy.next
 
+
 def linked_list_to_list(head: Optional[ListNode]) -> List[int]:
     res = []
     while head:
@@ -61,16 +64,18 @@ def linked_list_to_list(head: Optional[ListNode]) -> List[int]:
         head = head.next
     return res
 
+
 def test_example_1():
     # Input: head = [1,2,3,4,5]
     # Output: [3,4,5]
-    head = build_linked_list([1,2,3,4,5])
+    head = build_linked_list([1, 2, 3, 4, 5])
     result = Solution().middleNode(head)
-    assert linked_list_to_list(result) == [3,4,5]
+    assert linked_list_to_list(result) == [3, 4, 5]
+
 
 def test_example_2():
     # Input: head = [1,2,3,4,5,6]
     # Output: [4,5,6]
-    head = build_linked_list([1,2,3,4,5,6])
+    head = build_linked_list([1, 2, 3, 4, 5, 6])
     result = Solution().middleNode(head)
-    assert linked_list_to_list(result) == [4,5,6]
+    assert linked_list_to_list(result) == [4, 5, 6]
