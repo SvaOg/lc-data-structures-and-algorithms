@@ -9,13 +9,13 @@ user-invocable: true
 
 ## Instructions
 
-1. **Determine the target folder.** If a second argument was provided (`$ARGUMENTS[1]`), use `problems/$ARGUMENTS[1]/`. Otherwise, ask the user which `problems/<topic>/` subdirectory to place the file in — list the existing subdirectories so they can pick one.
+1. **Determine the target folder.** If a second argument was provided (`$ARGUMENTS[1]`), use `problems/$ARGUMENTS[1]/`. Otherwise, place the file into `problems/general/` subdirectory.
 
 2. **Look up the problem.** Use your training data to find LeetCode problem number $ARGUMENTS[0]. You need: the title, full description text, all examples (Input/Output/Explanation), all constraints, and any follow-up questions.
 
 3. **Create the file** at `problems/<topic>/problem_$ARGUMENTS[0].py` following the exact skeleton below. Do not zero-pad the number.
 
-4. **After creating the file**, run `python -m pytest problems/<topic>/problem_$ARGUMENTS[0].py` to confirm the tests are collected (they will fail with `pass` bodies — that is expected).
+4. **After creating the file**, run `python -m pytest problems/<topic>/problem_$ARGUMENTS[0].py` to confirm the tests are collected.
 
 ## File skeleton
 

@@ -4,7 +4,9 @@
       "Bash(pytest:*)",
       "Bash(.venv/Scripts/python -m pytest:*)",
       "Bash(for dir in \"D:\\\\Courses\\\\lc-data-structures-and-algorithms\\\\problems\"/*)",
-      "Bash(do if [ -d \"$dir\" ])"
+      "Bash(do if [ -d \"$dir\" ])",
+      "Bash(python -m pytest:*)",
+      "Bash(.venvScriptspython -m pytest problems/general/problem_1768.py -v)"
     ]
   }
 }
