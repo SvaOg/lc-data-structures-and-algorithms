@@ -40,8 +40,7 @@ import pytest
 
 
 class Solution:
-    def $METHOD_NAME(self, $PARAMETERS) -> $RETURN_TYPE:
-        pass
+    def $METHOD_NAME(self, $PARAMETERS) -> $RETURN_TYPE: ...
 
 
 @pytest.fixture
@@ -68,7 +67,7 @@ def test_002(sln):
 - Import only `from typing import List` and `import pytest`. Add additional imports from `typing` only if the method signature requires them (e.g. `Optional`, `Dict`).
 - If the problem uses trees, also import `from treenode import TreeNode` and use `TreeNode.create_from_list()` in tests.
 - If the problem uses linked lists, also import `from linked_lists import ListNode, build_linked_list, linked_list_to_list` and use those helpers in tests.
-- The `Solution` method body must be `pass` — never include an implementation.
+- The `Solution` method body must be `...` — never include an implementation.
 - One `test_NNN(sln)` per example, named sequentially. Each test has a short docstring. Do not use `pytest.mark.parametrize`.
 - Every test must be decorated with `@pytest.mark.xfail(reason="Not implemented", strict=True)`. Remove the decorator once the solution is implemented.
 - No `if __name__ == "__main__"` block.
