@@ -7,7 +7,15 @@
       "Bash(do if [ -d \"$dir\" ])",
       "Bash(python -m pytest:*)",
       "Bash(.venvScriptspython -m pytest problems/general/problem_1768.py -v)",
-      "Bash(\"D:\\\\Courses\\\\lc-data-structures-and-algorithms\\\\.venv\\\\Scripts\\\\python\" -m pytest:*)"
+      "Bash(\"D:\\\\Courses\\\\lc-data-structures-and-algorithms\\\\.venv\\\\Scripts\\\\python\" -m pytest:*)",
+      "Bash(.venv\\\\Scripts\\\\python -m pytest:*)",
+      "Bash(cmd /c \".venv\\\\Scripts\\\\python -m pytest problems/general/problem_1431.py -v\")",
+      "Bash(cmd /c \".venv\\\\Scripts\\\\python.exe -m pytest problems\\\\general\\\\problem_1431.py -v\")",
+      "Bash(tree:*)",
+      "Bash(ruff format:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ]
   }
 }
