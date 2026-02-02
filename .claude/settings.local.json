@@ -15,7 +15,9 @@
       "Bash(ruff format:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(git push)",
+      "Bash(\"D:\\\\Courses\\\\lc-data-structures-and-algorithms\\\\.venv\\\\Scripts\\\\python\" -m pytest problems/general/problem_605.py -v)"
     ]
   }
 }

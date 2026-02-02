@@ -35,7 +35,6 @@ Constraints:
 $CONSTRAINTS
 """
 
-from typing import List
 import pytest
 
 
@@ -64,7 +63,7 @@ def test_002(sln):
 
 ## Rules
 
-- Import only `from typing import List` and `import pytest`. Add additional imports from `typing` only if the method signature requires them (e.g. `Optional`, `Dict`).
+- Import only `import pytest`. Add additional imports from `typing` only if the method signature requires them (e.g. `Optional`, `Dict`).
 - If the problem uses trees, also import `from treenode import TreeNode` and use `TreeNode.create_from_list()` in tests.
 - If the problem uses linked lists, also import `from linked_lists import ListNode, build_linked_list, linked_list_to_list` and use those helpers in tests.
 - The `Solution` method body must be `...` — never include an implementation.
