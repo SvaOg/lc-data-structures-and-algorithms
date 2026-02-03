@@ -53,6 +53,8 @@ class Solution:
         return res
 
     def productExceptSelf1(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+
         prefix = list(accumulate(nums, operator.mul))
         suffix = list(accumulate(nums[::-1], operator.mul))[::-1]
 
