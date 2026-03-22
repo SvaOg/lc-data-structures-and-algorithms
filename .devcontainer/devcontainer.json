@@ -1,0 +1,11 @@
+{
+    "name": "Python Failure Test",
+    "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu",
+    "features": {
+        "python": {
+            "version": "3.12"
+        },
+        "ghcr.io/devcontainers-extra/features/uv:1": {}
+    },
+    "postCreateCommand": "uv sync"
+}
