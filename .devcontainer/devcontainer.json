@@ -1,11 +1,15 @@
 {
-    "name": "Python Failure Test",
+    "name": "Python + uv Learning",
     "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu",
     "features": {
-        "python": {
-            "version": "3.12"
-        },
+        "ghcr.io/devcontainers/features/python:1": { "version": "3.12" },
         "ghcr.io/devcontainers-extra/features/uv:1": {}
     },
-    "postCreateCommand": "uv sync"
+    "postCreateCommand": "uv sync",
+    "remoteEnv": {
+        "SSH_AUTH_SOCK": "/tmp/ssh-agent.sock"
+    },
+    "mounts": [
+        "source=${localEnv:SSH_AUTH_SOCK},target=/tmp/ssh-agent.sock,type=bind"
+    ]
 }
